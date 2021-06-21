@@ -1,3 +1,4 @@
+var countdown = document.querySelector(".countdown");
 var startQuiz = document.querySelector(".start-quiz");
 var quiz = document.querySelector(".quiz");
 var question = document.querySelector(".question");
