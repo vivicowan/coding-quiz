@@ -4,16 +4,16 @@ var start = document.querySelector(".start-button");
 var quiz = document.querySelector(".quiz");
 var question = document.querySelector(".question");
 var choices = document.querySelector(".choices");
-var choiceA = document.querySelector(".A");
-var choiceB = document.querySelector(".B");
-var choiceC = document.querySelector(".C");
-var choiceD = document.querySelector("AD");
+var choiceA = document.getElementById("A");
+var choiceB = document.getElementById("B");
+var choiceC = document.getElementById("C");
+var choiceD = document.getElementById("D");
 
 var questions = [
 	{
 		question:"Commonly used data types DO NOT include:",
 		choiceA:"1. strings",
-		choiceB:"2.booleans",
+		choiceB:"2. booleans",
 		choiceC:"3. alerts",
 		choiceD:"4. numbers",
 		correct:"C"
@@ -36,7 +36,7 @@ var questions = [
 		choiceA:"1. quotes",
 		choiceB:"2. curly brackets",
 		choiceC:"3. commas",
-		choiceD:"parentheses",
+		choiceD:"4. parentheses",
 		correct:"A"
 	},{
 		question:"A very useful tool during development and debugging for printing content to the debugger is:",
@@ -48,12 +48,16 @@ var questions = [
 	}
 ];
 
+var lastQuestion = questions.length - 1;
 var runningQuestion = 0;
+var count = 0;
+var TIMER;
+var score = 0;
 
 function renderQuestion(){
     var q = questions[runningQuestion];
     
-    question.innerHTML = "<p>"+ q.question +"</p>";
+    question.innerHTML = q.question;
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
@@ -66,3 +70,4 @@ function startQuiz(){
 	startPage.style.display = "none";
     renderQuestion();
 }
+
