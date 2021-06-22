@@ -1,5 +1,6 @@
 var countdown = document.querySelector(".countdown");
-var startQuiz = document.querySelector(".start-quiz");
+var startPage = document.querySelector(".start-quiz")
+var start = document.querySelector(".start-button");
 var quiz = document.querySelector(".quiz");
 var question = document.querySelector(".question");
 var choices = document.querySelector(".choices");
@@ -46,3 +47,21 @@ var questions = [
 		correct:"2"
 	}
 ];
+
+var runningQuestion = 0;
+
+function renderQuestion(){
+    let q = questions[runningQuestion];
+    
+    question.innerHTML = "<p>"+ q.question +"</p>";
+    choice1.innerHTML = q.choice1;
+    choice2.innerHTML = q.choice2;
+    choice3.innerHTML = q.choice3;
+	 choice4.innerHTML = q.choice4;
+}
+
+start.addEventListener("click", startQuiz);
+
+function startQuiz(){
+	alert("HELLO")
+}
