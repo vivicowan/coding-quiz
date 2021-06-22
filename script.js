@@ -50,8 +50,7 @@ var questions = [
 
 var lastQuestion = questions.length - 1;
 var runningQuestion = 0;
-var count = 0;
-var TIMER;
+var secondsLeft = 0;
 var score = 0;
 
 function renderQuestion(){
@@ -67,26 +66,24 @@ function renderQuestion(){
 start.addEventListener("click", startQuiz);
 
 function startQuiz(){
+	renderCounter();
 	startPage.style.display = "none";
 	renderQuestion();
 	quiz.style.display = "block";
-	TIMER = setInterval(renderCounter,1000); 
 }
 
-function renderCounter(){
-	if(count <= questionTime){
-		 countdown.innerHTML = count;
-		 count++
-	}else{
-		 count = 0;
-		 if(runningQuestion < lastQuestion){
-			  runningQuestion++;
-			  renderQuestion();
-		 }else{
-			  // end the quiz and show the score
-			  clearInterval(TIMER);
-		 }
-	}
+
+function renderCounter() {
+	secondsLeft = 75
+  var timerInterval = setInterval(function () {
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      yourScorePage();
+    } else {
+      countdown.textContent = "Timer: " + secondsLeft ;
+      secondsLeft--;
+    }
+  }, 1000);
 }
 
 function checkAnswer(answer){
@@ -100,7 +97,7 @@ function checkAnswer(answer){
 		 runningQuestion++;
 		 renderQuestion();
 	}else{
-		 clearInterval(TIMER);
+		 
 	}
 }
 
