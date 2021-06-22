@@ -68,6 +68,7 @@ start.addEventListener("click", startQuiz);
 
 function startQuiz(){
 	startPage.style.display = "none";
-    renderQuestion();
+	renderQuestion();
+	quiz.style.display = "block";
 }
 
