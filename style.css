@@ -32,13 +32,19 @@ body{
 	border: 3px solid lightseagreen;
 	color : lightseagreen;
 }
+
+.quiz{
+	position: absolute;
+	left:200px;
+	top:50px;	
+}
    
 .question{
 	width:500px;
 	height : 125px;
-	position: absolute;
-	right:0;
-	top:0;
+	right: 200px;
+	top:20px;
+	font-size: 1.5em;
 }
 	 
 .question p{
@@ -49,9 +55,8 @@ body{
     
 .choices{
 	width : 480px;
-	position: absolute;
-	right : 0;
-	top : 125px;
+	right : 200px;
+	top : 75px;
 	padding : 10px
 }
 
