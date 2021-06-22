@@ -70,5 +70,47 @@ function startQuiz(){
 	startPage.style.display = "none";
 	renderQuestion();
 	quiz.style.display = "block";
+	TIMER = setInterval(renderCounter,1000); 
+}
+
+function renderCounter(){
+	if(count <= questionTime){
+		 countdown.innerHTML = count;
+		 count++
+	}else{
+		 count = 0;
+		 if(runningQuestion < lastQuestion){
+			  runningQuestion++;
+			  renderQuestion();
+		 }else{
+			  // end the quiz and show the score
+			  clearInterval(TIMER);
+		 }
+	}
+}
+
+function checkAnswer(answer){
+	if( answer == questions[runningQuestion].correct){
+		 score++;
+	}else{
+
+	}
+	count = 0;
+	if(runningQuestion < lastQuestion){
+		 runningQuestion++;
+		 renderQuestion();
+	}else{
+		 clearInterval(TIMER);
+	}
+}
+
+// answer is correct
+function answerIsCorrect(){
+
+}
+
+// answer is Wrong
+function answerIsWrong(){
+
 }
 
