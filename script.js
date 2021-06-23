@@ -33,11 +33,11 @@ var questions = [
 		choiceD:"4. all of the above",
 		correct:"D"
 	},{
-		question:"String values must be enclosed within _____ when being assigned to variables.",
-		choiceA:"1. quotes",
-		choiceB:"2. curly brackets",
-		choiceC:"3. commas",
-		choiceD:"4. parentheses",
+		question:"What does HTML stand for?",
+		choiceA:"1. HyperText Markup Language",
+		choiceB:"2. Had Too Many Lollipops",
+		choiceC:"3. Hope To Meet Larry",
+		choiceD:"4. Hiking The Mountain Later",
 		correct:"A"
 	},{
 		question:"A very useful tool during development and debugging for printing content to the debugger is:",
@@ -48,6 +48,8 @@ var questions = [
 		correct:"B"
 	}
 ];
+
+
 
 var lastQuestion = questions.length - 1;
 var runningQuestion = 0;
