@@ -78,11 +78,11 @@ function startQuiz(){
 function renderCounter() {
 	secondsLeft = 75
 	timer = setInterval(function () {
+		countdown.textContent = "Timer: " + secondsLeft;
 		if (secondsLeft < 0) {
 			clearInterval(timer);
 			doneRender();
 		} else {
-			countdown.textContent = "Timer: " + secondsLeft;
 			secondsLeft--;
 		}
 	}, 1000);
@@ -160,7 +160,7 @@ function highscoreRender(){
 	  var userName = userScore[i].name;
  
 	  var li = document.createElement('li');
-	  li.textContent = userName +"-"+ userScore[i].score;
+	  li.textContent = userName +":"+ userScore[i].score;
 	  li.setAttribute('data-index', i);
 
 	  scoreList.appendChild(li);
