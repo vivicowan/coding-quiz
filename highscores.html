@@ -5,11 +5,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Coding Quiz</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="./style.css" />
 	</head>
 
 	<header>
-		<div class="view-scores">
+		<div class="view-scores btn btn-outline-dark">
 			<a href="./index.html">Quiz Again!</a>
 		</div>
 	</header>
@@ -17,8 +18,8 @@
 	<body>
 		<div class="card">
 		  <h1>High Scores!</h1>
-		  <ul id="high-scores"></ul>
-		  <button id="clearme" onclick="javascript:localStorage.clear;">Clear High Scores</button
+		  <ul class="list-group list-group-flush" id="high-scores"></ul>
+		  <button class="button btn btn-outline-secondary" id="clearme" onclick="javascript:localStorage.clear;">Clear High Scores</button
 		</div>
 
 		<script src="./highscores.js"></script>

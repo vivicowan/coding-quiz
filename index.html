@@ -5,14 +5,15 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Coding Quiz</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="./style.css" />
 	</head>
 
 	<header>
-		<div class="view-scores">
+		<div class="view-scores btn btn-outline-dark">
 			<a href="./highscores.html">View Highscores</a>
 		</div>
-		<div class="countdown"></div>
+		<div class="countdown d-flex justify-content-end badge badge-secondary"></div>
 	</header>
 
 	<body>
@@ -47,7 +48,7 @@
 				</form>
 				<div class="card">
 					<h1>High Scores!</h1>
-					<ul id="high-score-list"></ul>
+					<ul class="list-group list-group-flush" id="high-score-list"></ul>
 				</div>
 			</section>
 		</section>

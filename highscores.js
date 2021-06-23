@@ -1,3 +1,4 @@
+var card = document.querySelector(".card")
 var prevScores = localStorage.getItem("userScores");
 var scoreListEl = document.getElementById("high-scores")
 var clear = document.getElementById("clearme");
