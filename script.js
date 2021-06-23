@@ -105,14 +105,14 @@ function checkAnswer(answer){
 
 // answer is correct
 function answerIsCorrect(){
-	score++;
+	score += 20;
 	prev.textContent = "Correct!";
 }
 
 // answer is Wrong
 function answerIsWrong(){
 	secondsLeft -= 15;
-	score--;
+	score -= 5;
 	prev.textContent = "Wrong!";
 }
 
@@ -127,6 +127,7 @@ function doneRender(){
 	startPage.style.display = "none";
 	quiz.style.display = "none";
 	inputCard.style.display= "block";
+	scoreInput.textContent = "Your final score is: " + score;
 
 	submit.addEventListener('click', function (event) {
 		event.preventDefault();
