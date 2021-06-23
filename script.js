@@ -80,7 +80,7 @@ function renderCounter() {
 	timer = setInterval(function () {
 		if (secondsLeft < 0) {
 			clearInterval(timer);
-			scoreRender();
+			doneRender();
 		} else {
 			countdown.textContent = "Timer: " + secondsLeft;
 			secondsLeft--;
@@ -99,7 +99,7 @@ function checkAnswer(answer){
 		 renderQuestion();
 	}else{
 		clearInterval(timer);	
-		scoreRender();
+		doneRender();
 	}
 }
 
@@ -116,7 +116,72 @@ function answerIsWrong(){
 	prev.textContent = "Wrong!";
 }
 
-function scoreRender(){
+var inputCard = document.querySelector(".input-card");
+var scoreInput = document.getElementById("score-text");
+var submit = document.getElementById("submit-button");
+var scoreList = document.getElementById("high-score-list");
 
+var userScore = [];
+
+function doneRender(){
+	startPage.style.display = "none";
+	quiz.style.display = "none";
+	inputCard.style.display= "block";
+
+	submit.addEventListener('click', function (event) {
+		event.preventDefault();
+	
+		var userText = scoreInput.value.trim();
+	
+		if (userText === '') {
+		  return;
+		}
+		userScore.push(userText);
+		scoreInput.value = '';
+	
+		storeScores();
+		highscoreRender();
+	});
 }
 
+function highscoreRender(){
+	scoreList.innerHTML = '';
+
+	for (var i = 0; i < userScore.length; i++) {
+	  var userName = userScore[i];
+ 
+	  var li = document.createElement('li');
+	  li.textContent = userName +"-"+ score;
+	  li.setAttribute('data-index', i);
+
+	  scoreList.appendChild(li);
+	}
+}
+
+function init() {
+	var storedScores = JSON.parse(localStorage.getItem('userScore'));
+ 
+	if (storedScores !== null) {
+	  userScore = storedScores;
+	}
+	highscoreRender();
+}
+ 
+function storeScores() {
+	localStorage.setItem('userScore', JSON.stringify(userScore));
+}
+ 
+function scoreList(){
+	
+	var pastScores = JSON.parse(localStorage.getItem("pastScores"));
+	if (!pastScores){
+		pastScores = [];
+	}
+	localStorage.setItem("pastScores", JSON.stringify(pastScores));
+ 
+	storeScores();
+	highscoreRender();
+}
+ 
+init();
+ 

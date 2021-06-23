@@ -29,11 +29,11 @@
 					<div class="choice" id="B" onclick="checkAnswer('B')"><p></p></div>
 					<div class="choice" id="C" onclick="checkAnswer('C')"><p></p></div>
 					<div class="choice" id="D" onclick="checkAnswer('D')"><p></p></div>
-					<div class="previous"></div>
 			   </div>
 			</section>
+			<div class="previous"></div>
 
-			<section class="input-card">
+			<section class="input-card" style="display: none;">
 				<h1>All Done!</h1>
 				<form id="score-form" method="POST">
 				  <label for="score-text"></label>
@@ -43,7 +43,12 @@
 					 name="score-text"
 					 id="score-text"
 				  />
+				  <button id="submit-button">Submit</button>
 				</form>
+				<div class="card">
+					<h1>High Scores!</h1>
+					<ul id="high-score-list"></ul>
+				</div>
 			</section>
 		</section>
 		<script src="./script.js"></script>
