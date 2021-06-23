@@ -8,6 +8,7 @@ var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
+var prev = document.querySelector(".previous")
 
 var questions = [
 	{
@@ -81,7 +82,7 @@ function renderCounter() {
 			clearInterval(timer);
 			scoreRender();
 		} else {
-			countdown.textContent = "Timer: " + secondsLeft ;
+			countdown.textContent = "Timer: " + secondsLeft;
 			secondsLeft--;
 		}
 	}, 1000);
@@ -105,12 +106,14 @@ function checkAnswer(answer){
 // answer is correct
 function answerIsCorrect(){
 	score++;
+	prev.textContent = "Correct!";
 }
 
 // answer is Wrong
 function answerIsWrong(){
 	secondsLeft -= 15;
 	score--;
+	prev.textContent = "Wrong!";
 }
 
 function scoreRender(){
