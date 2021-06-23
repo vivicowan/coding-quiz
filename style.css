@@ -1,3 +1,4 @@
+/* Universal selector to remove default styling. */
 * {
 	box-sizing: border-box;
 	padding: 0;
@@ -5,7 +6,7 @@
 	list-style-type: none;
 }
 
-
+/* Setting font size, family, and backgroud color for body section */
 body{
 	font-size: 20px;
 	font-family: monospace;
@@ -33,6 +34,7 @@ body{
 	box-shadow: 0px 5px 15px 0px;
 	position: relative;
 }
+
 
 .start-quiz{
 	font-size: 1.5em;

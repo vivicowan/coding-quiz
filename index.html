@@ -5,17 +5,19 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Coding Quiz</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/> <!-- Linked Bootstrap to HTML -->
 		<link rel="stylesheet" href="./style.css" />
 	</head>
 
+<!-- Header include "View Scores" link and the display to the timer/countdown. -->
 	<header>
 		<div class="view-scores btn btn-outline-dark">
-			<a href="./highscores.html">View Highscores</a>
+			<a href="./highscores.html">View Highscores</a> <!-- Link to other HTML to make a clean page for scoreboard. -->
 		</div>
 		<div class="countdown d-flex justify-content-end badge badge-secondary"></div>
 	</header>
 
+<!-- Body includes a container for the quiz/questions/choices as well as the form to input initials once quiz is over. -->
 	<body>
 		<section class="container">
 			<section class="start-quiz">
@@ -26,13 +28,13 @@
 			<section class="quiz" style="display: none;">
 				<div class="question"><p></p></div>
 				<div class="choices">
-					<div class="choice" id="A" onclick="checkAnswer('A')"><p></p></div>
+					<div class="choice" id="A" onclick="checkAnswer('A')"><p></p></div> <!-- The onclick is a shorter way of checking if correct answer was selected by user or not. -->
 					<div class="choice" id="B" onclick="checkAnswer('B')"><p></p></div>
 					<div class="choice" id="C" onclick="checkAnswer('C')"><p></p></div>
 					<div class="choice" id="D" onclick="checkAnswer('D')"><p></p></div>
 			   </div>
 			</section>
-			<div class="previous"></div>
+			<div class="previous"></div> <!-- Displays whether the previous answer was incorrect or correct.  -->
 
 			<section class="input-card" style="display: none;">
 				<h1>All Done!</h1>

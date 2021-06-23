@@ -1,8 +1,11 @@
+// Delcaring variable that mainpulate the DOM
 var card = document.querySelector(".card")
 var prevScores = localStorage.getItem("userScores");
 var scoreListEl = document.getElementById("high-scores")
 var clear = document.getElementById("clearme");
 
+
+// Pasting same highscoreRender function that puts score in a list and sorts them
 function highscoreRender(){
 	scoreListEl.innerHTML = '';
 
@@ -17,6 +20,7 @@ function highscoreRender(){
 	}
 }
 
+// Checks local storage if anything was saved and displays it 
 function init() {
 	var storedScores = JSON.parse(localStorage.getItem('userScore'));
  
@@ -26,7 +30,7 @@ function init() {
 	highscoreRender();
 }
 
-
+// When button is clicked, the userScore array is emptied and local storage is set to empty.
 clear.addEventListener("click", clearScores)
 
 function clearScores() {
@@ -35,7 +39,7 @@ function clearScores() {
 	init();
 }
 
-
+// Calling function init to initialize the browsers local storage 
 init();
 
 

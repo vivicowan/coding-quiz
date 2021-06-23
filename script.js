@@ -1,3 +1,4 @@
+// Declaring all variables that are manipulating the DOM
 var countdown = document.querySelector(".countdown");
 var startPage = document.querySelector(".start-quiz")
 var start = document.querySelector(".start-button");
@@ -10,6 +11,7 @@ var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
 var prev = document.querySelector(".previous")
 
+// Putting all questions in an array to use index to switch to a different question and choices.
 var questions = [
 	{
 		question:"Commonly used data types DO NOT include:",
@@ -49,14 +51,14 @@ var questions = [
 	}
 ];
 
-
-
+// Declaring variables for functions
 var lastQuestion = questions.length - 1;
 var runningQuestion = 0;
 var secondsLeft = 0;
 var timer; 
 var score = 0;
 
+// Rendering a question function
 function renderQuestion(){
     var q = questions[runningQuestion];
     
@@ -67,16 +69,17 @@ function renderQuestion(){
     choiceD.innerHTML = q.choiceD;
 }
 
+// When start is clicked, then the startQuiz runs and calls renderCounter and renderQuestion to display both in HTML.
 start.addEventListener("click", startQuiz);
 
 function startQuiz(){
 	renderCounter();
-	startPage.style.display = "none";
+	startPage.style.display = "none"; // Hiding home page to show questions
 	renderQuestion();
 	quiz.style.display = "block";
 }
 
-
+// Sets time to 75 seconds and counts down, if it reaches zero then quiz ends and doneRender is called.
 function renderCounter() {
 	secondsLeft = 75
 	timer = setInterval(function () {
@@ -90,6 +93,7 @@ function renderCounter() {
 	}, 1000);
 }
 
+// function that is connected to HTML to check whether correct or incorrect answer was chosen
 function checkAnswer(answer){
 	if( answer == questions[runningQuestion].correct){
 		 answerIsCorrect();
@@ -118,15 +122,16 @@ function answerIsWrong(){
 	prev.textContent = "Wrong!";
 }
 
+// Declaring varables for score functionality
 var inputCard = document.querySelector(".input-card");
 var scoreText = document.getElementById("score-text");
 var scoreInput = document.getElementById("score-input");
 var submit = document.getElementById("submit-button");
 var scoreList = document.getElementById("high-score-list");
 
-var userScore = [];
+var userScore = []; // user score is an empty array to store our objects
 
-
+// doneRender switches to last page where score is given and user is asked to input initials
 function doneRender(){
 	startPage.style.display = "none";
 	quiz.style.display = "none";
@@ -134,16 +139,17 @@ function doneRender(){
 	scoreText.textContent = "Your final score is: " + score;
 }
 
+// When submit is clicked, the object with name and score is created and is sorted from greatst number to smallest
 submit.addEventListener('click', function (event) {
 	event.preventDefault();
 	
-	var userText = scoreInput.value.trim();
+	var userText = scoreInput.value.trim(); 
 	var newScore = {};
 
-	if (userText === '') {
+	if (userText === '') { // this condition is made if the input is empty, nothing is displayed
 	  return;
 	}
-	newScore = {name:userText,score:score};
+	newScore = {name:userText,score:score}; // newScore is the object that is placed in the empty array userScore
 	userScore.push(newScore);
 	scoreInput.value = '';
 	
@@ -155,6 +161,7 @@ submit.addEventListener('click', function (event) {
 	highscoreRender();
 });
 
+// Dispays the scores in a list fashion to user
 function highscoreRender(){
 	scoreList.innerHTML = '';
 
@@ -169,6 +176,7 @@ function highscoreRender(){
 	}
 }
 
+// This funtion checks for anything stored in local storage and saves it to browser
 function init() {
 	var storedScores = JSON.parse(localStorage.getItem('userScore'));
  
@@ -177,7 +185,8 @@ function init() {
 	}
 	highscoreRender();
 }
- 
+
+// This function stringifies and set key in localStorage to userScore array
 function storeScores() {
 	localStorage.setItem('userScore', JSON.stringify(userScore));
 }
