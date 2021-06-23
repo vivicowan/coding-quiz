@@ -117,42 +117,50 @@ function answerIsWrong(){
 }
 
 var inputCard = document.querySelector(".input-card");
-var scoreInput = document.getElementById("score-text");
+var scoreText = document.getElementById("score-text");
+var scoreInput = document.getElementById("score-input");
 var submit = document.getElementById("submit-button");
 var scoreList = document.getElementById("high-score-list");
 
 var userScore = [];
 
+
 function doneRender(){
 	startPage.style.display = "none";
 	quiz.style.display = "none";
 	inputCard.style.display= "block";
-	scoreInput.textContent = "Your final score is: " + score;
-
-	submit.addEventListener('click', function (event) {
-		event.preventDefault();
-	
-		var userText = scoreInput.value.trim();
-	
-		if (userText === '') {
-		  return;
-		}
-		userScore.push(userText);
-		scoreInput.value = '';
-	
-		storeScores();
-		highscoreRender();
-	});
+	scoreText.textContent = "Your final score is: " + score;
 }
+
+submit.addEventListener('click', function (event) {
+	event.preventDefault();
+	
+	var userText = scoreInput.value.trim();
+	var newScore = {};
+
+	if (userText === '') {
+	  return;
+	}
+	newScore = {name:userText,score:score};
+	userScore.push(newScore);
+	scoreInput.value = '';
+	
+	userScore.sort(function(a, b) {
+	return b.score - a.score;
+   });
+
+	storeScores();
+	highscoreRender();
+});
 
 function highscoreRender(){
 	scoreList.innerHTML = '';
 
 	for (var i = 0; i < userScore.length; i++) {
-	  var userName = userScore[i];
+	  var userName = userScore[i].name;
  
 	  var li = document.createElement('li');
-	  li.textContent = userName +"-"+ score;
+	  li.textContent = userName +"-"+ userScore[i].score;
 	  li.setAttribute('data-index', i);
 
 	  scoreList.appendChild(li);
