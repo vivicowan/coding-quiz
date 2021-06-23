@@ -51,6 +51,7 @@ var questions = [
 var lastQuestion = questions.length - 1;
 var runningQuestion = 0;
 var secondsLeft = 0;
+var timer; 
 var score = 0;
 
 function renderQuestion(){
@@ -75,39 +76,44 @@ function startQuiz(){
 
 function renderCounter() {
 	secondsLeft = 75
-  var timerInterval = setInterval(function () {
-    if (secondsLeft <= 0) {
-      clearInterval(timerInterval);
-      yourScorePage();
-    } else {
-      countdown.textContent = "Timer: " + secondsLeft ;
-      secondsLeft--;
-    }
-  }, 1000);
+	timer = setInterval(function () {
+		if (secondsLeft < 0) {
+			clearInterval(timer);
+			scoreRender();
+		} else {
+			countdown.textContent = "Timer: " + secondsLeft ;
+			secondsLeft--;
+		}
+	}, 1000);
 }
 
 function checkAnswer(answer){
 	if( answer == questions[runningQuestion].correct){
-		 score++;
+		 answerIsCorrect();
 	}else{
-
+		answerIsWrong();
 	}
-	count = 0;
 	if(runningQuestion < lastQuestion){
 		 runningQuestion++;
 		 renderQuestion();
 	}else{
-		 
+		clearInterval(timer);	
+		scoreRender();
 	}
 }
 
 // answer is correct
 function answerIsCorrect(){
-
+	score++;
 }
 
 // answer is Wrong
 function answerIsWrong(){
+	secondsLeft -= 15;
+	score--;
+}
+
+function scoreRender(){
 
 }
 
